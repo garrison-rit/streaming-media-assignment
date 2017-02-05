@@ -2,6 +2,8 @@ const fs = require('fs');
 // our pages to serve
 const index = fs.readFileSync(`${__dirname}/../client/client.html`);
 const page2 = fs.readFileSync(`${__dirname}/../client/client2.html`);
+const page3
+= fs.readFileSync(`${__dirname}/../client/client3.html`);
 
 // serving the pages!
 const getIndex = (request, response) => {
@@ -16,6 +18,13 @@ const getPage2 = (request, response) => {
   response.end();
 };
 
+const getPage3 = (request, response) => {
+  response.writeHead(200, { 'Content-Type': 'text/html' });
+  response.write(page3);
+  response.end();
+};
+
 // expose the methods
 module.exports.getIndex = getIndex;
 module.exports.getPage2 = getPage2;
+module.exports.getPage3 = getPage3;
